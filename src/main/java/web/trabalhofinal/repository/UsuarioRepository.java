@@ -1,5 +1,5 @@
 package web.trabalhofinal.repository;
 
-public class EjRepository {
+public class UsuarioRepository {
 
 }
