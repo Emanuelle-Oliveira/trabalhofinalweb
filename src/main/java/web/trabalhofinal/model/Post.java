@@ -1,6 +1,6 @@
 package web.trabalhofinal.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,10 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "post")
+@DynamicUpdate
 public class Post {
 	
 	@Id
@@ -23,18 +27,13 @@ public class Post {
 	private String descricao;
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
-	private LocalDate data;
+	private LocalDateTime dataHora;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_proposta_escolhida")
+	private Proposta propostaEscolhida;
 	
 	public String getDescricao() {
 		return descricao;
@@ -52,12 +51,12 @@ public class Post {
 		this.categoria = categoria;
 	}
 	
-	public LocalDate getData() {
-		return data;
+	public LocalDateTime getDataHora() {
+		return dataHora;
 	}
 	
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setDataHora(LocalDateTime dataHora) {
+		this.dataHora = dataHora;
 	}
 	
 	public Cliente getCliente() {
@@ -70,7 +69,7 @@ public class Post {
 	
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", descricao=" + descricao + ", categoria=" + categoria + ", data=" + data
+		return "Post [id=" + id + ", descricao=" + descricao + ", categoria=" + categoria + ", dataHora=" + dataHora
 				+ ", cliente=" + cliente + "]";
 	}
 }

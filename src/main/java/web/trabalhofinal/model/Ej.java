@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity 
 @DiscriminatorValue ("ej")
+@DynamicUpdate
 public class Ej extends Usuario{
 
 	private String cidade;
