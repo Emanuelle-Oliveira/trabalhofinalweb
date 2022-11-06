@@ -1,6 +1,5 @@
 package web.trabalhofinal.model;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,6 +29,14 @@ public class Usuario {
 	@Enumerated(EnumType.STRING)
 	private Status status = Status.ATIVO;
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}

@@ -1,6 +1,7 @@
 package web.trabalhofinal.model;
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,8 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.DynamicUpdate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "post")
@@ -26,14 +27,27 @@ public class Post {
 	private String descricao;
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
+	@Column(name = "data_hora")
 	private LocalDateTime dataHora;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cliente")
+	@JsonIgnore
 	private Cliente cliente;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_proposta_escolhida")
+	@JsonIgnore
 	private Proposta propostaEscolhida;
+	@Enumerated(EnumType.STRING)
+	private Status status = Status.ATIVO;
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -66,9 +80,19 @@ public class Post {
 		this.cliente = cliente;
 	}
 	
-	@Override
-	public String toString() {
-		return "Post [id=" + id + ", descricao=" + descricao + ", categoria=" + categoria + ", dataHora=" + dataHora
-				+ ", cliente=" + cliente + "]";
+	public Proposta getPropostaEscolhida() {
+		return propostaEscolhida;
+	}
+
+	public void setPropostaEscolhida(Proposta propostaEscolhida) {
+		this.propostaEscolhida = propostaEscolhida;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }
