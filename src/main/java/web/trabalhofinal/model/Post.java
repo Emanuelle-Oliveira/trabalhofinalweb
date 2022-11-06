@@ -1,7 +1,6 @@
 package web.trabalhofinal.model;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

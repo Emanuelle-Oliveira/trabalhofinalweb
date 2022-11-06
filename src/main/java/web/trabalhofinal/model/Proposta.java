@@ -9,11 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "post")
+@Table(name = "proposta")
 @DynamicUpdate
 public class Proposta {
 	
