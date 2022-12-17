@@ -50,6 +50,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Adiciona a dependência do JasperReports -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.18.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

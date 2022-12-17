@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Subrelatorio" pageWidth="481" pageHeight="842" columnWidth="481" leftMargin="0" rightMargin="0" topMargin="14" bottomMargin="0" uuid="9e0af101-e716-4d65-9589-80067da25466">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cG9zdCAsMTQ1LDY5LDk3NDA0NGRkLThmZjEtNDJjMS04YTJhLWYwMmI5MWFjYjc1YTtwcm9wb3N0
+YSAsMTUsOTYsMGVkNTdhMjYtMWM3ZS00NDMzLWE3YzUtM2U2ZjlmNDI3OGNhO3VzdWFyaW8gLDM2
+NywxNSwwMTRjY2VjMy0wZjg1LTQ2NzMtOWI2OS03MzNiOWQxYmMzNzA7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="337"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="663"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Banco Trabalho Final"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<parameter name="CodigoEj" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT post.descricao,
+	post.data_hora,
+	usuario.nome
+FROM proposta
+	INNER JOIN post ON 
+	 proposta.id_post = post.id 
+	INNER JOIN usuario ON 
+	 post.id_cliente = usuario.id 
+WHERE 
+	 proposta.id_ej = $P{CodigoEj} 
+	 AND proposta.id = post.id_proposta_escolhida]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.label" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="post"/>
+	</field>
+	<field name="data_hora" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="data_hora"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_hora"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="post"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<detail>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="80" height="16" uuid="ad38344a-cbaf-4dd8-9ffa-7aaefe1e2138"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Postado em ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="20" width="461" height="30" uuid="30dd434a-35ba-4072-a8b5-74bb3eaaee8d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="110" height="16" uuid="146ddb85-de2f-4e01-b62d-e5f80662d596"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="0" width="140" height="16" uuid="ac55cfe6-4399-4c8b-87a1-54341729a2ed"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="0" width="90" height="16" uuid="9394af7f-b729-411b-8e37-2d69c73f0c74"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[pelo(a) cliente]]></text>
+			</staticText>
+			<rectangle radius="5">
+				<reportElement mode="Transparent" x="0" y="-10" width="480" height="60" forecolor="#7800A3" uuid="1b8081b0-6cac-4cdf-b11c-c20a3f87916c"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

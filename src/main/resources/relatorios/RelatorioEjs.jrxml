@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioEjs" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" uuid="dd3ce8b4-ee87-4c0d-a6d5-1ea673cbe158">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Banco Trabalho Final"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT id,
+	nome,
+	categoria,
+	status,
+	tipo_usuario
+FROM usuario
+WHERE 
+	status = 'ATIVO' 
+AND
+	tipo_usuario = 'ej'
+ORDER BY
+	nome ASC]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="tipo_usuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo_usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo_usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="81" y="0" width="320" height="30" forecolor="#7800A3" uuid="11cf5dd7-9fe8-4abf-813c-1643ca64076a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Propostas fechadas por cada EJ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="30" height="20" uuid="b0332a60-635b-43fc-9b95-e32072a9bcc0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EJ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="347" y="0" width="130" height="21" uuid="35c9ee4b-fc47-4ee4-87ce-9f0da6d388eb"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="-1" width="76" height="21" uuid="42eac202-2468-4199-b559-093e17b26e4c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="23" y="0" width="220" height="19" forecolor="#7800A3" uuid="24483302-fc23-4fb8-ae24-6909ef388d49"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="20" width="480" height="10" uuid="3b8857af-471c-4692-b8ac-f715abcac679"/>
+				<subreportParameter name="CodigoEj">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["src/main/resources/relatorios/Subrelatorio.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField pattern="dd MMMMM, yyyy">
+				<reportElement x="0" y="0" width="170" height="30" uuid="b67cd743-bafd-4b66-b197-9617491e1f32"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="af885c10-4a85-4114-9ef3-5e44d67f7735"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="380" y="0" width="100" height="30" uuid="521d6111-c8b2-4eef-8530-bc07e3831a1a"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
