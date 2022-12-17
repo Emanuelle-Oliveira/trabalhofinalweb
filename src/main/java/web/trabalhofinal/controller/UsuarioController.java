@@ -3,7 +3,7 @@ package web.trabalhofinal.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import web.trabalhofinal.repository.UsuarioRepository;
-import web.trabalhofinal.service.UsuarioService;
+import web.trabalhofinal.service.EjService;
 
 @Controller
 public class UsuarioController {
@@ -12,5 +12,5 @@ public class UsuarioController {
 	private UsuarioRepository usuarioRepository;
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private EjService usuarioService;
 }
