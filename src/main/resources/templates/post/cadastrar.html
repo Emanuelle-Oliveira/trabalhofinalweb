@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../../static/css/vendors/bootstrap5/bootstrap-icons.css" th:href="@{/css/vendors/bootstrap5/bootstrap-icons.css}" />
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../static/css/styleindex.css" th:href="@{/css/style2.css}">
+<link rel="stylesheet" type="text/css" href="../../static/css/styleindex.css" th:href="@{/css/styleindex.css}">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
 			<ul class="navbar-nav">
 				<li>
 					<span class="logo">
-						<a class="nav-link" th:href="@{/}" href="#">MEaJuda</a>
+						<a class="nav-link" th:href="@{/}">MEaJuda</a>
 					</span>
 				</li>
 				<li class="topbar dropdown">
@@ -56,8 +56,8 @@
 		<div class="container1">
 			<form class="row g-3" th:action="@{/post/cadastrar}" method="post" th:object="${post}">
 				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label" th:field="*{descricao}">Descrição</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					<label for="descricao" class="form-label">Descrição</label>
+					<textarea class="form-control" th:field="*{descricao}" rows="3"></textarea>
 				</div>
 				<div class="form-floating mb-3 col-md-12">
 					<select class="form-select " id="categoria" name="categoria">
@@ -71,11 +71,12 @@
 						<option value="AMBIENTAL">Ambiental</option>
 						<option value="MECANICA">Mecânica</option>
 						<option value="ADMINISTRACAO">Administração</option>
+						<option value="MARKETING">Marketing</option>
 					</select>
 				</div>
 
 				<div class="d-grid gap-2 mb-5 col-6 mx-auto">
-					<button type="submit" class="btn botao">Cadastrar</button>
+					<button type="submit" class="btn botao">Publicar</button>
 				</div>
 			</form>
 		</div>
