@@ -76,7 +76,7 @@
 				<label for="floatingInput">Cidade</label>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<select class="form-select " id="uf" name="uf">
+				<select class="form-select " th:field="*{uf}">
 					<option th:value="${ej.uf}" th:text="${ej.uf.getDescricao()}" selected disabled hidden>Estado</option>
 					<option value="AC">Acre</option>
 					<option value="AL">Alagoas</option>
@@ -107,7 +107,7 @@
 				</select>
 			</div>
 			<div class="form-floating mb-3 col-md-12">
-				<select class="form-select " id="categoria" name="categoria">
+				<select class="form-select " th:field="*{categoria}">
 					<option th:value="${ej.categoria}" th:text="${ej.categoria.getDescricao()}" selected disabled hidden>Categoria</option>
 					<option value="TECNOLOGIA">Tecnologia</option>
 					<option value="SAUDE">Saúde</option>
@@ -118,6 +118,7 @@
 					<option value="AMBIENTAL">Ambiental</option>
 					<option value="MECANICA">Mecânica</option>
 					<option value="ADMINISTRACAO">Administração</option>
+					<option value="MARKETING">Marketing</option>
 				</select>
 			</div>
 

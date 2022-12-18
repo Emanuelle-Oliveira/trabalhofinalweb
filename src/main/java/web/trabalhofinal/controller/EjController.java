@@ -1,7 +1,6 @@
 package web.trabalhofinal.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import web.trabalhofinal.model.Ej;
 import web.trabalhofinal.model.Status;
 import web.trabalhofinal.model.filter.EjFilter;
@@ -38,7 +36,7 @@ public class EjController {
 	@PostMapping("/cadastrar")
 	public String cadastrar(Ej ej) {
 		ejService.salvar(ej);
-		return "ej/cadastrar";
+		return "redirect:/ej/pesquisar";
 	}
 
 	@GetMapping("/abrirpesquisar")
@@ -64,14 +62,14 @@ public class EjController {
 	@PostMapping("/atualizar")
 	public String atualizar(Ej ej) {
 		ejService.atualizar(ej);
-		return "redirect:/ej/abrirpesquisar";
+		return "redirect:/ej/pesquisar";
 	}
 
 	@PostMapping("/remover")
 	public String remover(Ej ej) {
 		ej.setStatus(Status.INATIVO);
 		ejService.atualizar(ej);
-		return "redirect:/ej/abrirpesquisar";
+		return "redirect:/ej/pesquisar";
 	}
 
 }

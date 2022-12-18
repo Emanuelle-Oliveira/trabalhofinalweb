@@ -67,7 +67,7 @@
             <label for="floatingInput">Cidade</label>
           </div>
           <div class="form-floating mb-3 col-md-6">
-            <select class="form-select " id="uf" name="uf">
+            <select class="form-select " th:field="*{uf}">
               <option value="" selected disabled hidden>Estado</option>
               <option value="AC">Acre</option>
               <option value="AL">Alagoas</option>
@@ -98,7 +98,7 @@
             </select>
           </div>
           <div class="form-floating mb-3 col-md-12">
-            <select class="form-select " id="categoria" name="categoria">
+            <select class="form-select " th:field="*{categoria}">
               <option value="" selected disabled hidden>Categoria</option>
               <option value="TECNOLOGIA">Tecnologia</option>
               <option value="SAUDE">Saúde</option>
@@ -109,9 +109,10 @@
               <option value="AMBIENTAL">Ambiental</option>
               <option value="MECANICA">Mecânica</option>
               <option value="ADMINISTRACAO">Administração</option>
+              <option value="MARKETING">Marketing</option>
             </select>
           </div>
-          
+                    
           <div class="d-grid gap-2 mb-5 col-6 mx-auto">
             <button type="submit" class="btn botao">Cadastrar</button>
           </div>
