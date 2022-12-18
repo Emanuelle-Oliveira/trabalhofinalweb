@@ -1,5 +1,8 @@
 package web.trabalhofinal.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
@@ -27,6 +34,12 @@ public class Usuario {
 	private String telefone;
 	@Enumerated(EnumType.STRING)
 	private Status status = Status.ATIVO;
+	private String senha;
+	private boolean ativo;
+	@ManyToMany
+	@JoinTable(name = "usuario_papel", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_papel"))
+	private List<Papel> papeis = new ArrayList<>();
+
 	
 	public Long getId() {
 		return id;
@@ -68,9 +81,38 @@ public class Usuario {
 		this.status = status;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public List<Papel> getPapeis() {
+		return papeis;
+	}
+
+	public void setPapeis(List<Papel> papeis) {
+		this.papeis = papeis;
+	}
+
+	public void adicionarPapel(Papel papel) {
+		papeis.add(papel);
+	}
+	
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", status="
-				+ status + "]";
+				+ status + ", senha=" + senha + "]";
 	}
+
 }

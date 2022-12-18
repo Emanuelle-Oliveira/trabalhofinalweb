@@ -51,32 +51,36 @@
 		</div>
 	</header>
 
-	<main class="principal">
-		<h1 class="titulo">Nova EJ</h1>
-		<form class="row g-3" th:action="@{/ej/cadastrar}" method="post" th:object="${ej}">
-			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" th:field="*{nome}" id="floatingInput" placeholder="Maria da Silva">
+	<main class="principal mb-5">
+		<h1 class="titulo">Informações da EJ</h1>
+		<form class="row g-3" th:object="${ej}">
+			<div class="form-floating mb-5 col-md-3 ms-md-auto  container2">
+				<img th:src="@{${ej.urlImagem}}" class="imglogo">
+			</div>
+			<div class="form-floating mb-3 col-md-6 ms-md-auto" style="height: 80px;">
+				<input type="text" disabled="" class="form-control" th:field="*{nome}" id="floatingInput" placeholder="Maria da Silva">
 				<label for="floatingInput">Nome</label>
 			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="email" class="form-control" th:field="*{email}" id="floatingInput" placeholder="name@example.com">
+			<div class="form-floating mb-3 col-md-6 ms-md-auto">
+				<input type="email" disabled="" class="form-control" th:field="*{email}" id="floatingInput" placeholder="name@example.com">
 				<label for="floatingInput">Email</label>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{telefone}" placeholder="(34)9934539888">
+				<input type="text" disabled="" class="form-control" id="floatingInput" th:field="*{cidade}" placeholder="Uberaba">
+				<label for="floatingInput">Cidade</label>
+			</div>
+
+			<div class="form-floating mb-3 col-md-6 quadrado1">
+				<input type="text" disabled="" class="form-control" id="floatingInput" th:field="*{cnpj}" placeholder="12345678912">
+				<label for="floatingInput">Cnpj</label>
+			</div>
+			<div class="form-floating mb-3 col-md-6 ">
+				<input type="text" disabled="" class="form-control" id="floatingInput" th:field="*{telefone}" placeholder="(34)9934539888">
 				<label for="floatingInput">Telefone</label>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{cnpj}" placeholder="12345678912">
-				<label for="floatingInput">CNPJ</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{cidade}" placeholder="Uberaba">
-				<label for="floatingInput">Cidade</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<select class="form-select " id="uf" name="uf">
-					<option value="" selected disabled hidden>Estado</option>
+				<select disabled="" class="form-select " id="uf" name="uf">
+					<option th:value="${ej.uf}" th:text="${ej.uf.getDescricao()}" selected disabled hidden>Estado</option>
 					<option value="AC">Acre</option>
 					<option value="AL">Alagoas</option>
 					<option value="AP">Amapá</option>
@@ -104,18 +108,11 @@
 					<option value="SE">Sergipe</option>
 					<option value="TO">Tocantins</option>
 				</select>
+				<label for="floatingInput">Estado</label>
 			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="url" class="form-control" id="floatingInput" th:field="*{urlImagem}" placeholder="http://logo.com">
-				<label for="floatingInput">URL Logo</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="password" class="form-control" id="floatingInput" th:field="*{senha}" placeholder="12345678912">
-				<label for="floatingInput">Senha</label>
-			</div>
-			<div class="form-floating mb-3 col-md-12">
-				<select class="form-select " id="categoria" name="categoria">
-					<option value="" selected disabled hidden>Categoria</option>
+			<div class="form-floating mb-3 col-md-6 quadrado2">
+				<select disabled="" class="form-select " id="categoria" name="categoria">
+					<option th:value="${ej.categoria}" th:text="${ej.categoria.getDescricao()}" selected disabled hidden>Categoria</option>
 					<option value="TECNOLOGIA">Tecnologia</option>
 					<option value="SAUDE">Saúde</option>
 					<option value="GESTAO_PESSOAS">Gestão de Pessoas</option>
@@ -127,16 +124,13 @@
 					<option value="ADMINISTRACAO">Administração</option>
 					<option value="MARKETING">Marketing</option>
 				</select>
-			</div>
-
-			<div class="d-grid gap-2 mb-5 col-6 mx-auto">
-				<button type="submit" class="btn botao">Cadastrar</button>
+				<label for="floatingInput">Categoria</label>
 			</div>
 		</form>
 	</main>
 
 
-	<!-- <footer class="rodape">
+	<footer class="rodape">
 		<div class="retangulo2">
 			<p class="redes">Redes Sociais:</p>
 			<span class="">
@@ -164,8 +158,8 @@
 				(11)3311-2244
 			</p>
 		</div>
-	</footer> -->
+	</footer>
 
-	<script src="../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
+	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

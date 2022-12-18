@@ -10,6 +10,8 @@ CREATE TABLE public.usuario
     cpf text,
     categoria text,
     tipo_usuario text,
+    url_imagem text,
+    senha text,
     status text DEFAULT 'ATIVO',
     PRIMARY KEY (id)
 );

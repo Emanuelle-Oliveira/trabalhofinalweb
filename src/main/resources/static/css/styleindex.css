@@ -23,7 +23,7 @@
     top: 20%;
     bottom: 29.26%;
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -39,7 +39,7 @@
     top: 35%;
     bottom: 12.21%;
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -68,7 +68,7 @@
     top: 35%;
     bottom: 12.21%;
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -122,6 +122,13 @@
     background: #7800A3;
 }
 
+footer {
+    position: fixed;
+    bottom:0;
+    left:0;
+}
+
+
 .redes{
     position: absolute;
     left: 2%;
@@ -129,7 +136,7 @@
     top: 20%;
     bottom: 57.43%;
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -147,7 +154,7 @@
 
     
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -166,7 +173,7 @@
 
     
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     
     font-size: 18px;
@@ -317,7 +324,7 @@
     height: 18px;
     
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -337,7 +344,7 @@
     height: 18px;
     
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -357,7 +364,7 @@
     height: 18px;
     
 
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -392,7 +399,7 @@
 }
 
 .titulo{
-    font-family: 'Courier Prime', sans-serif;
+    font-family: 'Courier Prime', sans serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -409,4 +416,34 @@
     border: 1px solid #7800A3;
     border-radius: 10px;
     padding: 20px;
+}
+
+.container2{
+    border: 1px solid #7800A3;
+    border-radius: 40px;
+    height: 200px;
+    width: 200px;
+
+}
+
+.imglogo{
+    height: 150px; 
+    width: 150px; 
+    position: absolute;
+    left: 10%;
+    top: 15%;
+}
+
+.quadrado1{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 570px;
+}
+
+.quadrado2{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 570px;
 }

@@ -67,11 +67,13 @@
 			<input type="checkbox" class="check3">
 			<p class="textcheck3">Estado</p>
 		</div> -->
-		
+
 		<div>
-			<button type="submit" class="btn botao"><a class="nav-link" th:href="@{/ej/abrirpesquisar}">Pesquisa Avançada</a></button>
+			<button type="submit" class="btn botao">
+				<a class="nav-link" th:href="@{/ej/abrirpesquisar}">Pesquisa Avançada</a>
+			</button>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-12 mb-3 mt-5">
 				<div class="card">
@@ -93,19 +95,22 @@
 							<tbody>
 								<tr th:each="ej : ${pagina.conteudo}">
 									<td th:text="${ej.nome}"></td>
-									<td th:text="${ej.categoria.getDescricao()}"></td> 
+									<td th:text="${ej.categoria.getDescricao()}"></td>
 									<td th:text="${ej.email}"></td>
 									<td th:text="${ej.telefone}"></td>
 									<td class="text-center">
 										<form th:action="@{/ej/abrirvisualizar}" method="post">
-
-											<!--<input type="hidden" name="queryString" th:value="${pagina.queryString}">
-                      
-                      <input type="hidden" name="nome" th:value="${v.codigo}">
-                      <input type="hidden" name="categoria" th:value="${v.nome}">
-                      <input type="hidden" name="telefone" th:value="${v.descricao}">
-                      <input type="hidden" name="email" th:value="${v.descricao}">-->
-											<button type="button" title="Visualizar" class="btn  botaover" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+											<input type="hidden" name="id" th:value="${ej.id}">
+											<input type="hidden" name="nome" th:value="${ej.nome}">
+											<input type="hidden" name="email" th:value="${ej.email}">
+											<input type="hidden" name="telefone" th:value="${ej.telefone}">
+											<input type="hidden" name="cnpj" th:value="${ej.cnpj}">
+											<input type="hidden" name="cidade" th:value="${ej.cidade}">
+											<input type="hidden" name="uf" th:value="${ej.uf}">
+											<input type="hidden" name="categoria" th:value="${ej.categoria}">
+											<input type="hidden" name="senha" th:value="${ej.senha}">
+											<input type="hidden" name="urlImagem" th:value="${ej.urlImagem}">
+											<button type="submit" title="Visualizar" class="btn  botaover">
 												<i class="bi bi-eye-fill"></i>
 											</button>
 										</form>
@@ -120,6 +125,8 @@
 											<input type="hidden" name="cidade" th:value="${ej.cidade}">
 											<input type="hidden" name="uf" th:value="${ej.uf}">
 											<input type="hidden" name="categoria" th:value="${ej.categoria}">
+											<input type="hidden" name="senha" th:value="${ej.senha}">
+											<input type="hidden" name="urlImagem" th:value="${ej.urlImagem}">
 											<button type="submit" title="Editar" class="btn  botaoedit">
 												<i class="bi bi-pencil-fill"></i>
 											</button>
@@ -136,6 +143,8 @@
 											<input type="hidden" name="cidade" th:value="${ej.cidade}">
 											<input type="hidden" name="uf" th:value="${ej.uf}">
 											<input type="hidden" name="categoria" th:value="${ej.categoria}">
+											<input type="hidden" name="senha" th:value="${ej.senha}">
+											<input type="hidden" name="urlImagem" th:value="${ej.urlImagem}">
 											<button type="submit" title="Remover" class="btn  confirmacao botaoexclui">
 												<i class="bi bi-trash-fill"> </i>
 											</button>
@@ -151,32 +160,9 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-		<!-- Modal -->
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">...</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Understood</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
 	</main>
 
-
-	<!--  <footer class="rodape">
+   <!-- <footer class="rodape">
       <div class="retangulo2">
         <p class="redes">Redes Sociais:</p>
         <span class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook rede1" viewBox="0 0 16 16">
@@ -191,7 +177,8 @@
         <p class="contato">Contatos: </p>
         <p class="contatos">mej@gmail.com <br>(11)3311-2244</p>
       </div>
-    </footer>-->
+    </footer> -->
+
 
 	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
 </body>
