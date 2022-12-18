@@ -29,39 +29,49 @@ public class EjController {
 
 	@Autowired
 	private EjService ejService;
-	
+
 	@GetMapping("/abrircadastrar")
 	public String abrirCadastrar(Ej ej) {
 		return "ej/cadastrar";
 	}
-	
+
 	@PostMapping("/cadastrar")
 	public String cadastrar(Ej ej) {
 		ejService.salvar(ej);
 		return "ej/cadastrar";
 	}
-	
+
 	@GetMapping("/abrirpesquisar")
 	public String abrirPesquisar(Ej ej) {
 		return "ej/pesquisar";
 	}
-	
+
 	@GetMapping("/pesquisar")
 	public String pesquisar(EjFilter filtro, Model model,
-			          @PageableDefault(size = 5) 
-                      @SortDefault(sort = "nome", direction = Sort.Direction.ASC)
-                      Pageable pageable, HttpServletRequest request) {
+			@PageableDefault(size = 5) @SortDefault(sort = "nome", direction = Sort.Direction.ASC) Pageable pageable,
+			HttpServletRequest request) {
 		Page<Ej> pagina = usuarioRepository.pesquisar(filtro, pageable);
 		PageWrapper<Ej> paginaWrapper = new PageWrapper<>(pagina, request);
 		model.addAttribute("pagina", paginaWrapper);
 		return "ej/listar";
 	}
-	
+
+	@PostMapping("/abriratualizar")
+	public String abrirAtualizar(Ej ej) {
+		return "ej/atualizar";
+	}
+
+	@PostMapping("/atualizar")
+	public String atualizar(Ej ej) {
+		ejService.atualizar(ej);
+		return "redirect:/ej/abrirpesquisar";
+	}
+
 	@PostMapping("/remover")
 	public String remover(Ej ej) {
 		ej.setStatus(Status.INATIVO);
-		ejService.alterar(ej);
+		ejService.atualizar(ej);
 		return "redirect:/ej/abrirpesquisar";
 	}
-	
+
 }

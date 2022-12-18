@@ -19,7 +19,7 @@ public class EjService {
 	}
 	
 	@Transactional
-	public void alterar(Ej ej) {
+	public void atualizar(Ej ej) {
 		usuarioRepository.save(ej);
 	}
 	

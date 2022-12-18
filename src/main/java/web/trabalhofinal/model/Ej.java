@@ -1,5 +1,6 @@
 package web.trabalhofinal.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,10 +13,13 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Ej extends Usuario{
 
 	private String cidade;
-	private String uf;
+	@Enumerated(EnumType.STRING)
+	private Uf uf;
 	private String cnpj;
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
+	@Column(name = "url_imagem")
+	private String urlImagem;
 	
 	public String getCidade() {
 		return cidade;
@@ -24,15 +28,15 @@ public class Ej extends Usuario{
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	
-	public String getUf() {
+		
+	public Uf getUf() {
 		return uf;
 	}
-	
-	public void setUf(String uf) {
+
+	public void setUf(Uf uf) {
 		this.uf = uf;
 	}
-	
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -48,9 +52,18 @@ public class Ej extends Usuario{
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+	
+	public String getUrlImagem() {
+		return urlImagem;
+	}
+
+	public void setUrlImagem(String urlImagem) {
+		this.urlImagem = urlImagem;
+	}
 
 	@Override
 	public String toString() {
-		return "Ej [cidade=" + cidade + ", uf=" + uf + ", cnpj=" + cnpj + ", categoria=" + categoria + "]";
+		return "Ej [cidade=" + cidade + ", uf=" + uf + ", cnpj=" + cnpj + ", categoria=" + categoria + ", urlImagem="
+				+ urlImagem + "]";
 	}
 }

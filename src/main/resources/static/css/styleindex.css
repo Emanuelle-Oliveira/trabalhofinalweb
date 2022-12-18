@@ -118,6 +118,7 @@
     height: 100px;
     left: 0px;
     top: 100%;
+    bottom: 0%;
     background: #7800A3;
 }
 
@@ -402,4 +403,10 @@
 
 
     color: #7800A3;
+}
+
+.container1{
+    border: 1px solid #7800A3;
+    border-radius: 10px;
+    padding: 20px;
 }
