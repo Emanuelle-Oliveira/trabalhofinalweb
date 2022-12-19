@@ -12,10 +12,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import web.trabalhofinal.model.Post;
 
 @Configuration
 public class SecurityConfig {
@@ -58,10 +59,13 @@ public class SecurityConfig {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		String idEnconder = "argon2";
+		
 		Map<String, PasswordEncoder> encoders = new HashMap<>();
 		encoders.put("argon2", new Argon2PasswordEncoder());
 		PasswordEncoder passwordEncoder = new DelegatingPasswordEncoder(idEnconder, encoders);
 		return passwordEncoder;
 	}
 
+	
+	
 }

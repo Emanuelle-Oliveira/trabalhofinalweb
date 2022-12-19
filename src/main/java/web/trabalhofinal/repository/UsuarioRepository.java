@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import web.trabalhofinal.model.Cliente;
+import web.trabalhofinal.model.Ej;
 import web.trabalhofinal.model.Usuario;
 import web.trabalhofinal.repository.queries.EjQueries;
 
@@ -21,5 +22,8 @@ public interface UsuarioRepository extends JpaRepository <Usuario, Long>, EjQuer
 	
 
 	@Query("select u from Usuario u where u.email = :email")
-	Cliente findByEmail(@Param("email")String email);
+	Cliente findClienteByEmail(@Param("email")String email);
+	
+	@Query("select u from Usuario u where u.email = :email")
+	Ej findEjByEmail(@Param("email")String email);
 }
