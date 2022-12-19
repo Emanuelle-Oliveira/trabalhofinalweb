@@ -39,6 +39,7 @@ public class SecurityConfig {
 			.antMatchers("/relatorio").hasRole("ADMIN")
 			.and()
 		.formLogin()
+		.loginPage("/login").permitAll()
 		.and()
 		.logout()
 		.logoutSuccessUrl("/");

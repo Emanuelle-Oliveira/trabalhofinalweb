@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEaJuda</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="../../static/css/vendors/bootstrap5/bootstrap.min.css" th:href="@{/css/vendors/bootstrap5/bootstrap.min.css}" />
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" type="text/css" href="../../static/css/vendors/bootstrap5/bootstrap-icons.css" th:href="@{/css/vendors/bootstrap5/bootstrap-icons.css}" />
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="../../static/css/styleindex.css" th:href="@{/css/styleindex.css}">
+</head>
+<body class="boxprincipal">
+
+	<main>
+		<div class="box1">
+			<div class="box2">
+				<h1 class="titulologin">Login</h1>
+				<form th:action="@{/login}" method="post">
+
+					<div class="container">
+						<label for="username" class="titulologar">Email</label>
+						<input type="text" class="form-control" id="username" name="username" placeholder="name@example.com">
+
+					</div>
+					<div class="container mt-4">
+						<label for="password" class="titulologar">Senha</label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="senha">
+					</div>
+					<div>
+					
+					<button type="submit" class="btn botaologin">Login</button>
+				</form>
+
+			</div>
+		</div>
+	</main>
+
+	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

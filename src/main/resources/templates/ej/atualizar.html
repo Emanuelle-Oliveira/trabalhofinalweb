@@ -69,7 +69,7 @@
 		</div>
 	</header>
 
-	<main class="principal">
+	<main class="mt-5 p-5 pt-5">
 		<h1 class="titulo">Atualizar EJ</h1>
 		<form class="row g-3" th:action="@{/ej/atualizar}" method="post" th:object="${ej}">
 			<input type="hidden" name="id" th:value="*{id}">
@@ -157,7 +157,7 @@
 	</main>
 
 
-	<!--  <footer class="rodape">
+	<footer class="rodape">
       <div class="retangulo2">
         <p class="redes">Redes Sociais:</p>
         <span class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook rede1" viewBox="0 0 16 16">
@@ -172,7 +172,7 @@
         <p class="contato">Contatos: </p>
         <p class="contatos">mej@gmail.com <br>(11)3311-2244</p>
       </div>
-    </footer>-->
+    </footer>
 
 
 	<script src="../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>

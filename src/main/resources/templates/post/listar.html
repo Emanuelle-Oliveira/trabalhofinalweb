@@ -68,7 +68,7 @@
 		</div>
 	</header>
 
-	<main class="principal">
+	<main class="mt-5 p-5 pt-5">
 		<div class="postar" sec:authorize="hasRole('ROLE_CLIENTE')">
 			<button type="submit" class="btn botaopost">
 				<a th:href="@{/post/abrircadastrar}" class="nav-link">Novo Post</a>
@@ -122,77 +122,10 @@
 				</table>
 			</div>
 		</div>
-
-
-
-
-		<!-- Modal -->
-
-
-		<!--  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">Propostas</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-						<div class="card">
-							<div class="card-body">
-								<table class="table table-striped table-hover table-responsive w-100">
-									<thead>
-										<tr>
-											<th scope="col" class="col-xs-1"></th>
-											<th scope="col" class="col-xs-1">Nome</th>
-											<th scope="col" class="col-xs-1">Email</th>
-											<th scope="col" class="col-xs-1">Telefone</th>
-
-											<th scope="col" colspan="2" class="col-xs-2 text-center"></th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- <tr th:each="v : ${pagina.conteudo}">
-											<td>
-												<input type="radio" value="codigo">
-											</td>
-											<td th:text="${v.codigo}"></td>
-											<td th:text="${v.nome}"></td>
-											<td th:text="${v.descricao}"></td>
-											<td class="text-center">
-												<form th:action="@{/vacinas/abriralterar}" method="post">
-
-													<input type="hidden" name="queryString" th:value="${pagina.queryString}">
-
-													<input type="hidden" name="nome" th:value="${v.codigo}">
-													<input type="hidden" name="categoria" th:value="${v.nome}">
-													<input type="hidden" name="telefone" th:value="${v.descricao}">
-													<input type="hidden" name="email" th:value="${v.descricao}">
-												</form>
-											</td>
-										</tr> 
-		</tbody>
-		</table>
-
-
-
-		</div>
-		</div>
-
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn botao">Confirmar</button>
-		</div>
-		</div>
-		</div>
-		</div>
-		-->
-
-
 	</main>
 
 
-	<!--  <footer class="rodape">
+	<footer class="rodape">
       <div class="retangulo2">
         <p class="redes">Redes Sociais:</p>
         <span class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook rede1" viewBox="0 0 16 16">
@@ -207,7 +140,7 @@
         <p class="contato">Contatos: </p>
         <p class="contatos">mej@gmail.com <br>(11)3311-2244</p>
       </div>
-    </footer>-->
+    </footer>
 
 	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
 </body>

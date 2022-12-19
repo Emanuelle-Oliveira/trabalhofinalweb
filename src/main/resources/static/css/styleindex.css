@@ -4,6 +4,7 @@
     height: 90px;
     left: 0px;
     top: 0px;
+    margin-bottom: 30px;
 }
 
 .retangulo1{
@@ -23,13 +24,22 @@
     top: 20%;
     bottom: 29.26%;
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 54px;
 
     color: #FFFFFF;
+}
+
+.logar{
+    position: absolute;
+    left: 87%;
+    right: 12.5%;
+    top: 32%;
+    bottom: 8.33%;
+    width: 65px;
 }
 
 .item2{
@@ -39,7 +49,7 @@
     top: 35%;
     bottom: 12.21%;
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -68,7 +78,7 @@
     top: 35%;
     bottom: 12.21%;
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -95,15 +105,6 @@
     color: #ffffffa8;
 }
 
-.logar{
-    position: absolute;
-    left: 87%;
-    right: 12.5%;
-    top: 32%;
-    bottom: 8.33%;
-    width: 65px;
-}
-
 .carrosel{
     width: 400px;
     height: 400px;
@@ -115,12 +116,11 @@
 }
 
 .rodape{
-    position: absolute;
+   
     width: 100%;
     height: 100px;
-    left: 0px;
-    top: 100%;
-    bottom: 0%;
+    position: relative;
+    bottom: 0;
     background: #7800A3;
 }
 
@@ -138,7 +138,7 @@ footer {
     top: 20%;
     bottom: 57.43%;
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -156,7 +156,7 @@ footer {
 
     
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -175,7 +175,7 @@ footer {
 
     
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     
     font-size: 18px;
@@ -282,6 +282,12 @@ footer {
     border-radius: 10px;
 }
 
+.botaologar{
+    background-color: #7800A3;
+    border: 1px solid #7800A3;
+    border-radius: 10px;
+}
+
 .pesquisa{
     color:#7800A3;
 }
@@ -326,7 +332,7 @@ footer {
     height: 18px;
     
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -346,7 +352,7 @@ footer {
     height: 18px;
     
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -366,7 +372,7 @@ footer {
     height: 18px;
     
 
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -400,12 +406,8 @@ footer {
     background-color: #7800A3;
 }
 
-#botaoProposta{
-	text-align:left;
-}
-
 .titulo{
-    font-family: 'Courier Prime', sans serif;
+    font-family: 'Courier Prime', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -525,6 +527,17 @@ footer {
     margin-right: auto;
 }
 
+.datapost{
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height */
+
+    color: #6D6D6D;
+}
+
 .proposta{
     padding-left: 300px;
     padding-right: 10px;
@@ -542,15 +555,110 @@ footer {
     padding: auto;
 }
 
+
 .botaorelatorio{
     color: #FFFFFF;
     background-color: #7800A3;
-    width: 300px;
+
     padding: auto;
 }
 
-.botaologar{
+.boxprincipal{
+    background: #ddaafa; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #ddaafa 0%, #7800A3 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ddaafa), color-stop(100%,#7800A3)); /* Chrome,Safari4+ */ 
+  background: -webkit-linear-gradient(-45deg,  #ddaafa 0%,#7800A3 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  #ddaafa 0%,#7800A3 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  #ddaafa 0%,#7800A3 100%); /* IE10+ */
+  background: linear-gradient(135deg,  #ddaafa 0%,#7800A3 100%); /* W3C */ 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddaafa', endColorstr='#7800A3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  background-attachment: fixed;
+}
+
+.box1{
+    border-radius: 40px;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    width: 400px;
+    height: 400px;
+}
+
+.box2{
+    margin-top: 50px;
+    padding-top: 50px ;
+}
+
+.titulologin{
+    color: #7800A3;
+    margin-left: 135px;
+    margin-right: auto;
+    padding: 10px;
+    
+}
+
+.botaologin{
+    color: #FFFFFF;
     background-color: #7800A3;
+    width: 200px;
+    margin-left: 100px;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.botaologin:hover{
     border: 1px solid #7800A3;
     border-radius: 10px;
+    color: black;
+}
+
+.titulologar{
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height */
+
+    color: #6D6D6D;
+}
+
+.erros{
+    width: 500px;
+    height: 500px;
+}
+
+.carroselitem{
+    width: 500px;
+    height: 600px;
+}
+
+.teste{
+    width: 600px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tituloprop{
+    font-family: 'Courier Prime', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 27px;
+    /* identical to box height */
+    text-align: center;
+    padding: 10px;
+
+
+    color:#6D6D6D;
+}
+
+.containerprop{
+    border: 1px solid #7800A3;
+    border-radius: 20px;
+    width: 400px;
 }
