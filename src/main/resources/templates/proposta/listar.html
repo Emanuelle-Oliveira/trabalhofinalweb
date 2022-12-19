@@ -69,67 +69,11 @@
 	</header>
 
 	<main class="principal">
-		<div class="postar" sec:authorize="hasRole('ROLE_CLIENTE')">
-			<button type="submit" class="btn botaopost">
-				<a th:href="@{/post/abrircadastrar}" class="nav-link">Novo Post</a>
-			</button>
-		</div>
-
-		<div class="postar" sec:authorize="hasRole('ROLE_ADMIN')">
-			<button type="submit" class="btn botaorelatorio">
-				<a th:href="@{/relatorio}" class="nav-link">Gerar Relátorio - Propostas Fechadas</a>
-			</button>
-		</div>
-
-		<div class="row" th:each="post : ${pagina.conteudo}">
-			<div class="col-md-12 mb-3 mt-4 tabela">
-				<table class="post">
-					<tr class="titulotab">
-						<td>
-							<div class="userbox">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle user" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-              </svg>
-							</div>
-							<p class="nomeuser" th:text="${post.cliente.id}">Maria</p>
-							<p class="nomecat" th:text="${post.categoria.getDescricao()}">Categoria</p>
-						</td>
-					</tr>
-					<tr>
-						<td class="despost" th:text="${post.descricao}">
-							<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus sodales ligula ac blandit. Mauris ut placerat velit, non rhoncus urna. Curabitur semper sit amet ex non pulvinar. Nulla nec erat tempor, sollicitudin dolor non, aliquam metus. Donec fermentum
-								lectus eget enim volutpat lacinia. Sed fringilla volutpat erat, a convallis elit lobortis a. Proin pellentesque sodales ipsum et interdum.</p>
-						</td>
-					</tr>
-
-					<tr sec:authorize="hasRole('ROLE_EJ')">
-						<td class="proposta">
-							<form th:action="@{/proposta/abrircadastrar}" method="get">
-								<input type="hidden" name="id" th:value="${post.id}">
-								<button type="submit" id="botaoProposta" class="btn  botao">Fazer Proposta</button>
-							</form>
-						</td>
-					</tr>
-					<tr sec:authorize="hasRole('ROLE_CLIENTE')">
-						<td class="proposta">
-							<form th:action="@{/proposta/listar}" method="get">
-								<input type="hidden" name="id" th:value="${post.id}">
-								<button type="submit" id="botaoProposta" class="btn  botao" <!-- data-bs-toggle="modal" data-bs-target="#staticBackdrop" --> Ver Propostas</button>
-							</form>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-
-
-
 
 		<!-- Modal -->
 
 
-		<!--  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -152,41 +96,29 @@
 										</tr>
 									</thead>
 									<tbody>
-										<!-- <tr th:each="v : ${pagina.conteudo}">
+
+										<tr th:each="p : ${pagina.conteudo}">
+											<!--<td>nome</td>
+											<td>telefone</td>
+											<td>email</td>-->
+											<td th:text="${p.ej.id}">Teste</td>
+											<td th:text="${p.id}"></td>
 											<td>
-												<input type="radio" value="codigo">
-											</td>
-											<td th:text="${v.codigo}"></td>
-											<td th:text="${v.nome}"></td>
-											<td th:text="${v.descricao}"></td>
-											<td class="text-center">
-												<form th:action="@{/vacinas/abriralterar}" method="post">
-
-													<input type="hidden" name="queryString" th:value="${pagina.queryString}">
-
-													<input type="hidden" name="nome" th:value="${v.codigo}">
-													<input type="hidden" name="categoria" th:value="${v.nome}">
-													<input type="hidden" name="telefone" th:value="${v.descricao}">
-													<input type="hidden" name="email" th:value="${v.descricao}">
+												<form th:action="@{/post/abriratualizar}" method="get">
+													<input type="hidden" name="propostaEscolhida" th:value="${p.id}">
+													<input type="hidden" name="id" th:value="${p.post.id}">
+													<button type="submit" id="botaoProposta" class="btn  botao">Selecionar</button>
 												</form>
 											</td>
-										</tr> 
-		</tbody>
-		</table>
-
-
-
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		</div>
-
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn botao">Confirmar</button>
-		</div>
-		</div>
-		</div>
-		</div>
-		-->
 
 
 	</main>
@@ -208,6 +140,18 @@
         <p class="contatos">mej@gmail.com <br>(11)3311-2244</p>
       </div>
     </footer>-->
+
+	</script>
+	<!-- jquery -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<!-- chamada da função -->
+	<script type="text/javascript">
+		$(window).load(function() {
+			$('#staticBackdrop').modal('show');
+		});
+	</script>
 
 	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
 </body>

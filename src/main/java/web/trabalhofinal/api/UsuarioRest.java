@@ -30,12 +30,12 @@ public class UsuarioRest {
 		return usuarioRepository.findClientesAtivos();
 	}
 	
-	@GetMapping("buscar/ej")
+	/*@GetMapping("buscar/ej")
 	public List<Usuario> buscarEjs() {
 		Sort sort = Sort.by("nome").ascending();
 		PageRequest paginacao = PageRequest.of(0, 10, sort);
 		return usuarioRepository.findEjsAtivas(paginacao);
-	}
+	}*/
 	
 	@GetMapping("buscar/id")
 	public Optional<Usuario> buscarUsuarioId(Long id) {

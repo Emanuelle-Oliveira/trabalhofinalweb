@@ -3,6 +3,7 @@ package web.trabalhofinal.controller;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import web.trabalhofinal.model.Cliente;
+import web.trabalhofinal.model.Ej;
 import web.trabalhofinal.model.Post;
 import web.trabalhofinal.model.Proposta;
 import web.trabalhofinal.model.filter.PostFilter;
@@ -64,13 +66,30 @@ public class PostController {
 		PageWrapper<Post> paginaWrapper = new PageWrapper<>(pagina, request);
 		model.addAttribute("pagina", paginaWrapper);
 
-		/*Post postSelecionado = new Post();
-		model.addAttribute("postSelecionado", postSelecionado);*/
-
 		List<Post> posts = postRepository.findAll();
 		model.addAttribute("posts", posts);
 		
 		return "post/listar";
+	}
+	
+	@GetMapping("/abriratualizar")
+	public String abrirAtualizar(Proposta proposta, Post post, Model model) {
+
+		model.addAttribute("propostaEscolhida", post.getPropostaEscolhida().getId());
+		
+		return "post/atualizar";
+	}
+	
+	@PostMapping("/atualizar")
+	public String atualizar(Proposta proposta, Model model, Post post) {
+		
+		Post post2 = postRepository.findPostById((post.getId()));
+		
+		post2.setPropostaEscolhida(post.getPropostaEscolhida());
+		post2.getPropostaEscolhida().setId(post.getPropostaEscolhida().getId());
+			
+		postService.atualizar(post2);
+		return "redirect:/post/listar";
 	}
 
 }

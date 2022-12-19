@@ -18,7 +18,7 @@ public interface UsuarioRepository extends JpaRepository <Usuario, Long>, EjQuer
 	List<Usuario> findClientesAtivos();
 	
 	@Query(value = "SELECT * FROM usuario AS u WHERE u.status = 'ATIVO' AND u.tipo_usuario = 'ej'", nativeQuery = true)
-	List<Usuario> findEjsAtivas(Pageable paginacao);
+	List<Ej> findEjsAtivas();
 	
 
 	@Query("select u from Usuario u where u.email = :email")
@@ -26,4 +26,7 @@ public interface UsuarioRepository extends JpaRepository <Usuario, Long>, EjQuer
 	
 	@Query("select u from Usuario u where u.email = :email")
 	Ej findEjByEmail(@Param("email")String email);
+	
+	@Query("select u from Usuario u where u.id = :id")
+	Ej findEjById(@Param("id")Long id);
 }

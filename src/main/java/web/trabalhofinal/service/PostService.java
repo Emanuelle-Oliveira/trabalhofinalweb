@@ -16,4 +16,9 @@ public class PostService {
 	public void salvar(Post post) {
 		postRepository.save(post);
 	}
+	
+	@Transactional
+	public void atualizar(Post post) {
+		postRepository.save(post);
+	}
 }

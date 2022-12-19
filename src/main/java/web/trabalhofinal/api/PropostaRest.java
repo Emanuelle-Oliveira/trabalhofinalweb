@@ -25,12 +25,12 @@ public class PropostaRest {
 		return propostaRepository.findAll();
 	}
 	
-	@GetMapping("buscar/post")
+/*	@GetMapping("buscar/post")
 	public List<Proposta> buscarPorPost(Post post) {
 		//Long idPost = post.getId();
 		Long idPost = (long) 10;
 		Sort sort = Sort.by("dataHora").ascending();
 		PageRequest paginacao = PageRequest.of(0, 10, sort);
 		return propostaRepository.findByPostAndStatus(idPost, paginacao);
-	}
+	}*/
 }

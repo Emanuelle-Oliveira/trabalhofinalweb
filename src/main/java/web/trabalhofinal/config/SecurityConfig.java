@@ -35,6 +35,7 @@ public class SecurityConfig {
 			.antMatchers("/ej/remover").hasRole("ADMIN")
 			.antMatchers("/post/listar").authenticated()
 			.antMatchers("/post/abrircadastrar", "/post/cadastrar").hasRole("CLIENTE")
+			.antMatchers("/proposta/abrircadastrar", "/proposta/cadastrar").hasRole("EJ")
 			.antMatchers("/relatorio").hasRole("ADMIN")
 			.and()
 		.formLogin()

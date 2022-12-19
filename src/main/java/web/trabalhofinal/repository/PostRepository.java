@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import web.trabalhofinal.model.Categoria;
+import web.trabalhofinal.model.Ej;
 import web.trabalhofinal.model.Post;
 import web.trabalhofinal.model.Status;
 import web.trabalhofinal.repository.queries.PostQueries;
@@ -21,4 +22,6 @@ public interface PostRepository extends JpaRepository <Post, Long>, PostQueries{
 	@Query("select p from Post as p where id_cliente = :idCliente and status = 'ATIVO'")
 	List<Post> findByClienteAndStatus(@Param("idCliente")Long idCliente, PageRequest paginacao);
 
+	@Query("select p from Post p where p.id = :id")
+	Post findPostById(@Param("id")Long id);
 }
