@@ -27,14 +27,19 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-			// Qualquer um pode fazer requisições para essas URLs
-			.antMatchers("/css/**", "/js/**", "/images/**", "/", "/index.html").permitAll()
-			// Um usuário autenticado e com o papel ADMIN pode fazer requisições para essas URLs	
-			.antMatchers("/ej/abrircadastrar").hasRole("ADMIN")
-			//.antMatchers("URL").hasAnyRole("ADMIN", "USUARIO")
+			.antMatchers("/css/**", "/js/**", "/images/**", "/", "/index.html").permitAll()	
+			.antMatchers("/ej/abrirpesquisar", "ej/pesquisar", "ej/visualizar").permitAll()	
+			.antMatchers("/ej/abrircadastrar", "/ej/cadastrar").hasRole("ADMIN")
+			.antMatchers("/ej/abriratualizar", "/ej/atualizar").hasRole("ADMIN")
+			.antMatchers("/ej/remover").hasRole("ADMIN")
+			.antMatchers("/post/listar").authenticated()
+			.antMatchers("/post/abrircadastrar", "/post/cadastrar").hasRole("CLIENTE")
+			.antMatchers("/relatorio").hasRole("ADMIN")
 			.and()
-		// A autenticação usando formulário está habilitada 
-		.formLogin();
+		.formLogin()
+		.and()
+		.logout()
+		.logoutSuccessUrl("/");
         return http.build();
     }
     

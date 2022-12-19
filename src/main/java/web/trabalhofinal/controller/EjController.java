@@ -1,7 +1,5 @@
 package web.trabalhofinal.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +11,14 @@ import org.springframework.data.web.SortDefault;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import web.trabalhofinal.model.Cliente;
 import web.trabalhofinal.model.Ej;
 import web.trabalhofinal.model.Papel;
 import web.trabalhofinal.model.Status;
-import web.trabalhofinal.model.Usuario;
 import web.trabalhofinal.model.filter.EjFilter;
 import web.trabalhofinal.pagination.PageWrapper;
 import web.trabalhofinal.repository.PapelRepository;
@@ -50,7 +47,38 @@ public class EjController {
 		adm.setNome("Manu");
 		adm.setSenha("12345");
 		adm.setSenha(passwordEncoder.encode(adm.getSenha()));
-		usuarioRepository.save(adm);*/
+		usuarioRepository.save(adm);
+		
+		Cliente cliente1 = new Cliente();
+		cliente1.setNome("Maria Silva");
+		cliente1.setEmail("maria@gmail.com");
+		cliente1.setTelefone("(33)91111-1111");
+		cliente1.setCpf("111.111.111-11");
+		cliente1.setAtivo(true);
+		cliente1.setSenha("12345");
+		cliente1.setSenha(passwordEncoder.encode(cliente1.getSenha()));
+		usuarioRepository.save(cliente1);
+		
+		Cliente cliente2 = new Cliente();
+		cliente2.setNome("João Pereira");
+		cliente2.setEmail("joao@gmail.com");
+		cliente2.setTelefone("(33)92222-2222");
+		cliente2.setCpf("222.222.222-22");
+		cliente2.setAtivo(true);
+		cliente2.setSenha("12345");
+		cliente2.setSenha(passwordEncoder.encode(cliente2.getSenha()));
+		usuarioRepository.save(cliente2);
+		
+		Cliente cliente3 = new Cliente();
+		cliente3.setNome("Luana Souza");
+		cliente3.setEmail("luana@gmail.com");
+		cliente3.setTelefone("(33)93333-3333");
+		cliente3.setCpf("333.333.333-33");
+		cliente3.setAtivo(true);
+		cliente3.setSenha("12345");
+		cliente3.setSenha(passwordEncoder.encode(cliente3.getSenha()));
+		usuarioRepository.save(cliente3);
+		*/
 		return "ej/cadastrar";
 	}
 
@@ -59,6 +87,7 @@ public class EjController {
 		Papel papel = papelRepository.findByNome("ROLE_EJ");
 		ej.adicionarPapel(papel);
 		ej.setSenha(passwordEncoder.encode(ej.getSenha()));
+		ej.setAtivo(true);
 		ejService.salvar(ej);
 		return "redirect:/ej/pesquisar";
 	}

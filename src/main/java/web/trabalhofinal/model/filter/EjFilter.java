@@ -1,8 +1,7 @@
 package web.trabalhofinal.model.filter;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import web.trabalhofinal.model.Categoria;
+import web.trabalhofinal.model.Uf;
 
 public class EjFilter {
 
@@ -11,7 +10,7 @@ public class EjFilter {
 	private String email;
 	private String telefone;
 	private String cidade;
-	private String uf;
+	private Uf uf;
 	private String cnpj;
 	private Categoria categoria;
 	public Long getId() {
@@ -44,10 +43,11 @@ public class EjFilter {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public String getUf() {
+
+	public Uf getUf() {
 		return uf;
 	}
-	public void setUf(String uf) {
+	public void setUf(Uf uf) {
 		this.uf = uf;
 	}
 	public String getCnpj() {
@@ -65,6 +65,6 @@ public class EjFilter {
 	@Override
 	public String toString() {
 		return "EjFilter [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cidade="
-				+ cidade + ", uf=" + uf + ", cnpj=" + cnpj + ", categoria=" + categoria + "]";
-	}
+				+ cidade + ", cnpj=" + cnpj + ", categoria=" + categoria + "]";
+	}	
 }

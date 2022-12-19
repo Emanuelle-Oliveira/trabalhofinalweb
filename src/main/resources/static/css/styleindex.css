@@ -88,18 +88,20 @@
     left: 3px;
     top: 3px;
     border-radius: 0px;
-
-    position: absolute;
-    left: 90%;
-    right: 12.5%;
-    top: 40%;
-    bottom: 8.33%;
-
     color: #FFFFFF;
 }
 
 .login:hover{
     color: #ffffffa8;
+}
+
+.logar{
+    position: absolute;
+    left: 87%;
+    right: 12.5%;
+    top: 32%;
+    bottom: 8.33%;
+    width: 65px;
 }
 
 .carrosel{
@@ -398,6 +400,10 @@ footer {
     background-color: #7800A3;
 }
 
+#botaoProposta{
+	text-align:left;
+}
+
 .titulo{
     font-family: 'Courier Prime', sans serif;
     font-style: normal;
@@ -447,3 +453,99 @@ footer {
     top: 50%;
     width: 570px;
 }
+
+.tabela{
+    border: 1px solid #7800A3;
+    border-radius: 20px;
+    padding: 15px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulotab{
+    margin: 10px;
+    padding: 10px;
+    
+}
+
+.user{
+    color: #7800A3;
+    height: 30px;
+    width: 30px;
+}
+
+.userbox{
+    height: 32px;
+    width: 32px;
+    margin: 0px;
+}
+
+.post{
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+}
+
+.nomeuser{
+    color: #7800A3;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 18px;  
+}
+
+.nomecat{
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height */
+
+    color: #6D6D6D;
+
+    margin: 0px;
+}
+
+.cat{
+    color: #7800A3;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 18px;
+    
+   
+}
+
+.despost{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.proposta{
+    padding-left: 300px;
+    padding-right: 10px;
+    
+}
+
+.desc{
+    margin: 10px 5px 20px 5px;
+    width: 700px;
+}
+.botaopost{
+    color: #FFFFFF;
+    background-color: #7800A3;
+    width: 150px;
+    padding: auto;
+}
+
+.botaorelatorio{
+    color: #FFFFFF;
+    background-color: #7800A3;
+    width: 300px;
+    padding: auto;
+}
+

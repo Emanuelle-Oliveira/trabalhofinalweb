@@ -13,7 +13,6 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="../../static/css/styleindex.css" th:href="@{/css/styleindex.css}">
-
 </head>
 <body>
 
@@ -22,7 +21,7 @@
 			<ul class="navbar-nav">
 				<li>
 					<span class="logo">
-						<a class="nav-link" th:href="@{/}">MEaJuda</a>
+						<a class="nav-link" th:href="@{/}" href="#">MEaJuda</a>
 					</span>
 				</li>
 				<li class="topbar dropdown">
@@ -38,7 +37,7 @@
 				</li>
 				<li>
 					<span class="item2">
-						<a class="nav-link" th:href="@{/post/listar}" href="#">Feed</a>
+						<a class="nav-link" th:href="@{/post/listar}">Feed</a>
 					</span>
 				</li>
 				<li>
@@ -70,90 +69,118 @@
 	</header>
 
 	<main class="principal">
-		<h1 class="titulo">Atualizar EJ</h1>
-		<form class="row g-3" th:action="@{/ej/atualizar}" method="post" th:object="${ej}">
-			<input type="hidden" name="id" th:value="*{id}">
-			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" th:field="*{nome}" id="floatingInput" placeholder="Maria da Silva">
-				<label for="floatingInput">Nome</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="email" class="form-control" th:field="*{email}" id="floatingInput" placeholder="name@example.com">
-				<label for="floatingInput">Email</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{telefone}" placeholder="(34)9934539888">
-				<label for="floatingInput">Telefone</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{cnpj}" placeholder="12345678912">
-				<label for="floatingInput">CNPJ</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{cidade}" placeholder="Uberaba">
-				<label for="floatingInput">Cidade</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<select class="form-select " th:field="*{uf}">
-					<option th:value="${ej.uf}" th:text="${ej.uf.getDescricao()}" selected disabled hidden>Estado</option>
-					<option value="AC">Acre</option>
-					<option value="AL">Alagoas</option>
-					<option value="AP">Amapá</option>
-					<option value="AM">Amazonas</option>
-					<option value="BA">Bahia</option>
-					<option value="CE">Ceará</option>
-					<option value="DF">Distrito Federal</option>
-					<option value="ES">Espírito Santo</option>
-					<option value="MA">Maranhão</option>
-					<option value="MT">Mato Grosso</option>
-					<option value="MS">Mato Grosso do Sul</option>
-					<option value="MG">Minas Gerais</option>
-					<option value="PA">Pará</option>
-					<option value="PB">Paraíba</option>
-					<option value="PR">Paraná</option>
-					<option value="PE">Pernambuco</option>
-					<option value="PI">Piauí</option>
-					<option value="RJ">Rio de Janeiro</option>
-					<option value="RN">Rio Grande do Norte</option>
-					<option value="RS">Rio Grande do Sul</option>
-					<option value="RO">Rondônia</option>
-					<option value="RR">Roraima</option>
-					<option value="SC">Santa Catarina</option>
-					<option value="SP">São Paulo</option>
-					<option value="SE">Sergipe</option>
-					<option value="TO">Tocantins</option>
-				</select>
-				<label for="floatingInput">Estado</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="url" class="form-control" id="floatingInput" th:field="*{urlImagem}" placeholder="http://logo.com">
-				<label for="floatingInput">URL Logo</label>
-			</div>
-			<div class="form-floating mb-3 col-md-6">
-				<input type="password" class="form-control" id="floatingInput" th:field="*{senha}" placeholder="12345678912">
-				<label for="floatingInput">Senha</label>
-			</div>
-			<div class="form-floating mb-3 col-md-12">
-				<select class="form-select " th:field="*{categoria}">
-					<option th:value="${ej.categoria}" th:text="${ej.categoria.getDescricao()}" selected disabled hidden>Categoria</option>
-					<option value="TECNOLOGIA">Tecnologia</option>
-					<option value="SAUDE">Saúde</option>
-					<option value="GESTAO_PESSOAS">Gestão de Pessoas</option>
-					<option value="CIVIL">Civil</option>
-					<option value="QUIMICA">Química</option>
-					<option value="JURIDICO">Jurídico</option>
-					<option value="AMBIENTAL">Ambiental</option>
-					<option value="MECANICA">Mecânica</option>
-					<option value="ADMINISTRACAO">Administração</option>
-					<option value="MARKETING">Marketing</option>
-				</select>
-				<label for="floatingInput">Categoria</label>
-			</div>
+		<div class="postar" sec:authorize="hasRole('ROLE_CLIENTE')">
+			<button type="submit" class="btn botaopost">
+				<a th:href="@{/post/abrircadastrar}" class="nav-link">Novo Post</a>
+			</button>
+		</div>
 
-			<div class="d-grid gap-2 mb-5 col-6 mx-auto">
-				<button type="submit" class="btn botao">Atualizar</button>
+		<div class="postar" sec:authorize="hasRole('ROLE_ADMIN')">
+			<button type="submit" class="btn botaorelatorio">
+				<a th:href="@{/relatorio}" class="nav-link">Gerar Relátorio - Propostas Fechadas</a>
+			</button>
+		</div>
+
+		<div class="row" th:each="post : ${pagina.conteudo}">
+			<div class="col-md-12 mb-3 mt-4 tabela">
+				<table class="post">
+					<tr class="titulotab">
+						<td>
+							<div class="userbox">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle user" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+              </svg>
+							</div>
+							<p class="nomeuser" th:text="${post.cliente.id}">Maria</p>
+							<p class="nomecat" th:text="${post.categoria.getDescricao()}">Categoria</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="despost" th:text="${post.descricao}">
+							<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus sodales ligula ac blandit. Mauris ut placerat velit, non rhoncus urna. Curabitur semper sit amet ex non pulvinar. Nulla nec erat tempor, sollicitudin dolor non, aliquam metus. Donec fermentum
+								lectus eget enim volutpat lacinia. Sed fringilla volutpat erat, a convallis elit lobortis a. Proin pellentesque sodales ipsum et interdum.</p>
+						</td>
+					</tr>
+					<tr sec:authorize="hasRole('ROLE_EJ')">
+						<td class="proposta">
+							<button type="button" id="botaoProposta" class="btn  botao">Fazer Proposta</button>
+						</td>
+					</tr>
+					<tr sec:authorize="hasRole('ROLE_CLIENTE')">
+						<td class="proposta">
+							<button type="button" id="botaoProposta" class="btn  botao" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver Propostas</button>
+						</td>
+					</tr>
+				</table>
 			</div>
-		</form>
+		</div>
+
+
+
+
+		<!-- Modal -->
+
+
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">Propostas</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						<div class="card">
+							<div class="card-body">
+								<table class="table table-striped table-hover table-responsive w-100">
+									<thead>
+										<tr>
+											<th scope="col" class="col-xs-1"></th>
+											<th scope="col" class="col-xs-1">Nome</th>
+											<th scope="col" class="col-xs-1">Email</th>
+											<th scope="col" class="col-xs-1">Telefone</th>
+
+											<th scope="col" colspan="2" class="col-xs-2 text-center"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- <tr th:each="v : ${pagina.conteudo}">
+											<td>
+												<input type="radio" value="codigo">
+											</td>
+											<td th:text="${v.codigo}"></td>
+											<td th:text="${v.nome}"></td>
+											<td th:text="${v.descricao}"></td>
+											<td class="text-center">
+												<form th:action="@{/vacinas/abriralterar}" method="post">
+
+													<input type="hidden" name="queryString" th:value="${pagina.queryString}">
+
+													<input type="hidden" name="nome" th:value="${v.codigo}">
+													<input type="hidden" name="categoria" th:value="${v.nome}">
+													<input type="hidden" name="telefone" th:value="${v.descricao}">
+													<input type="hidden" name="email" th:value="${v.descricao}">
+												</form>
+											</td>
+										</tr> -->
+									</tbody>
+								</table>
+
+
+
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn botao">Confirma</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 	</main>
 
 
@@ -174,7 +201,6 @@
       </div>
     </footer>-->
 
-
-	<script src="../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
+	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
