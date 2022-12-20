@@ -81,6 +81,11 @@ public class EjController {
 		ejService.atualizar(ej);
 		return "redirect:/ej/pesquisar";
 	}
+	
+	@PostMapping("/abrirremover")
+	public String abrirRemover(Ej ej) {
+		return "ej/remover";
+	}
 
 	@PostMapping("/remover")
 	public String remover(Ej ej) {

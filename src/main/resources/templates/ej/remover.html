@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEaJuda</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="../../static/css/vendors/bootstrap5/bootstrap.min.css" th:href="@{/css/vendors/bootstrap5/bootstrap.min.css}" />
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" type="text/css" href="../../static/css/vendors/bootstrap5/bootstrap-icons.css" th:href="@{/css/vendors/bootstrap5/bootstrap-icons.css}" />
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="../../static/css/styleindex.css" th:href="@{/css/styleindex.css}">
+
+</head>
+<body>
+
+	<header class="cabecario">
+		<div class="retangulo1">
+			<ul class="navbar-nav">
+				<li>
+					<span class="logo">
+						<a class="nav-link" th:href="@{/}">MEaJuda</a>
+					</span>
+				</li>
+				<li class="topbar dropdown">
+					<a class="item1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> EJs </a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" th:href="@{/ej/abrircadastrar}">Cadastrar</a>
+						</li>
+						<li>
+							<a class="dropdown-item" th:href="@{/ej/pesquisar}">Catálogo</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="item2">
+						<a class="nav-link" th:href="@{/post/listar}">Feed</a>
+					</span>
+				</li>
+				<li>
+					<div class="logar" sec:authorize="!isAuthenticated()">
+						<form action="#" th:action="@{/login}" method="post">
+							<button type="submit" class="botaologar">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right login" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                  </svg>
+							</button>
+						</form>
+					</div>
+
+					<div class="logar" sec:authorize="isAuthenticated()">
+
+						<form action="#" th:action="@{/logout}" method="post">
+							<button type="submit" class="botaologar">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left login" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+</svg>
+							</button>
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+	<main class="mt-5 p-5  pt-5">
+		<div class="mt-5 p-5  pt-5">
+			<div class="container-fluid ">
+				<h1 class="tituloprop">Deseja confirmar a remoção?</h1>
+
+				<form class="row g-3" th:action="@{/ej/remover}" method="post" th:object="${ej}">
+					<input type="hidden" name="id" th:value="${ej.id}">
+					<input type="hidden" name="nome" th:value="${ej.nome}">
+					<input type="hidden" name="email" th:value="${ej.email}">
+					<input type="hidden" name="telefone" th:value="${ej.telefone}">
+					<input type="hidden" name="cnpj" th:value="${ej.cnpj}">
+					<input type="hidden" name="cidade" th:value="${ej.cidade}">
+					<input type="hidden" name="uf" th:value="${ej.uf}">
+					<input type="hidden" name="categoria" th:value="${ej.categoria}">
+					<input type="hidden" name="senha" th:value="${ej.senha}">
+					<input type="hidden" name="urlImagem" th:value="${ej.urlImagem}">
+					<div class="d-grid gap-2 mb-5 mt-4 col-6 mx-auto">
+						<button type="submit" class="btn botao">Confirmar</button>
+					</div>
+				</form>
+			</div>
+	</main>
+
+	<script src="../../static/js/vendors/bootstrap5/bootstrap.bundle.min.js" th:src="@{/js/vendors/bootstrap5/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

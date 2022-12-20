@@ -152,7 +152,7 @@
 										</form>
 									</td>
 									<td class="text-center" sec:authorize="hasRole('ROLE_ADMIN')">
-										<form th:action="@{/ej/remover}" method="post">
+										<form th:action="@{/ej/abrirremover}" method="post">
 											<input type="hidden" name="id" th:value="${ej.id}">
 											<input type="hidden" name="nome" th:value="${ej.nome}">
 											<input type="hidden" name="email" th:value="${ej.email}">

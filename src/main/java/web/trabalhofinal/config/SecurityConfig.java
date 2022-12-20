@@ -32,7 +32,7 @@ public class SecurityConfig {
 			.antMatchers("/ej/abrirpesquisar", "ej/pesquisar", "ej/visualizar").permitAll()	
 			.antMatchers("/ej/abrircadastrar", "/ej/cadastrar").hasRole("ADMIN")
 			.antMatchers("/ej/abriratualizar", "/ej/atualizar").hasRole("ADMIN")
-			.antMatchers("/ej/remover").hasRole("ADMIN")
+			.antMatchers("/ej/abrirremover", "/ej/remover").hasRole("ADMIN")
 			.antMatchers("/post/listar").authenticated()
 			.antMatchers("/post/abrircadastrar", "/post/cadastrar").hasRole("CLIENTE")
 			.antMatchers("/post/abriratualizar", "/post/atualizar").hasRole("CLIENTE")
