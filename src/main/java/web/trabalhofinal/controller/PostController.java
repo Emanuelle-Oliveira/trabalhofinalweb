@@ -62,12 +62,16 @@ public class PostController {
 	public String listar(PostFilter filtro, Model model,
 			@PageableDefault(size = 5) @SortDefault(sort = "dataHora", direction = Sort.Direction.DESC) Pageable pageable,
 			HttpServletRequest request, Proposta proposta) {
+		
 		Page<Post> pagina = postRepository.pesquisar(filtro, pageable);
 		PageWrapper<Post> paginaWrapper = new PageWrapper<>(pagina, request);
 		model.addAttribute("pagina", paginaWrapper);
 
 		List<Post> posts = postRepository.findAll();
 		model.addAttribute("posts", posts);
+		
+		List<Ej> ej = usuarioRepository.findEjsAtivas();
+		model.addAttribute("ej", ej);
 		
 		return "post/listar";
 	}

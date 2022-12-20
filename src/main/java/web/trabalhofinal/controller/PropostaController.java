@@ -60,7 +60,7 @@ public class PropostaController {
 	}
 	
 	@GetMapping("/listar")
-	public String abrirListar(PropostaFilter filtro, Model model, @PageableDefault(size = 10) 
+	public String listar(PropostaFilter filtro, Model model, @PageableDefault(size = 10) 
 	@SortDefault(sort = "dataHora", direction = Sort.Direction.ASC) Pageable pageable,
 			HttpServletRequest request, Proposta proposta, Post post) {
 				

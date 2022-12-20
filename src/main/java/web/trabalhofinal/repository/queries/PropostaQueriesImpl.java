@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -31,6 +32,7 @@ public class PropostaQueriesImpl implements PropostaQueries {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Proposta> criteriaQuery = builder.createQuery(Proposta.class);
 		Root<Proposta> proposta = criteriaQuery.from(Proposta.class);
+		proposta.fetch("ej",JoinType.INNER);
 		TypedQuery<Proposta> typedQuery;
 		List<Predicate> predicateList = new ArrayList<>();
 
