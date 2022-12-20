@@ -1,6 +1,7 @@
 package web.trabalhofinal.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,11 +12,11 @@ import org.springframework.data.web.SortDefault;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import web.trabalhofinal.model.Cliente;
 import web.trabalhofinal.model.Ej;
 import web.trabalhofinal.model.Papel;
 import web.trabalhofinal.model.Status;
@@ -30,13 +31,13 @@ import web.trabalhofinal.service.EjService;
 public class EjController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private PapelRepository papelRepository;
 
 	@Autowired
 	private EjService ejService;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -46,13 +47,17 @@ public class EjController {
 	}
 
 	@PostMapping("/cadastrar")
-	public String cadastrar(Ej ej) {
-		Papel papel = papelRepository.findByNome("ROLE_EJ");
-		ej.adicionarPapel(papel);
-		ej.setSenha(passwordEncoder.encode(ej.getSenha()));
-		ej.setAtivo(true);
-		ejService.salvar(ej);
-		return "redirect:/ej/pesquisar";
+	public String cadastrar(@Valid Ej ej, BindingResult resultado) {
+		if(resultado.hasErrors()) {
+			return "ej/cadastrar";
+		}else {
+			Papel papel = papelRepository.findByNome("ROLE_EJ");
+			ej.adicionarPapel(papel);
+			ej.setSenha(passwordEncoder.encode(ej.getSenha()));
+			ej.setAtivo(true);
+			ejService.salvar(ej);
+			return "redirect:/ej/pesquisar";
+		}
 	}
 
 	@GetMapping("/abrirpesquisar")
@@ -76,12 +81,19 @@ public class EjController {
 	}
 
 	@PostMapping("/atualizar")
-	public String atualizar(Ej ej) {
-		ej.setSenha(passwordEncoder.encode(ej.getSenha()));
-		ejService.atualizar(ej);
-		return "redirect:/ej/pesquisar";
+	public String atualizar(@Valid Ej ej, BindingResult resultado) {
+		if(resultado.hasErrors()) {
+			return "ej/atualizar";
+		}else {
+			Papel papel = papelRepository.findByNome("ROLE_EJ");
+			ej.adicionarPapel(papel);
+			ej.setSenha(passwordEncoder.encode(ej.getSenha()));
+			ej.setAtivo(true);
+			ejService.atualizar(ej);
+			return "redirect:/ej/pesquisar";
+		}
 	}
-	
+
 	@PostMapping("/abrirremover")
 	public String abrirRemover(Ej ej) {
 		return "ej/remover";
@@ -94,7 +106,7 @@ public class EjController {
 		ejService.atualizar(ej);
 		return "redirect:/ej/pesquisar";
 	}
-	
+
 	@PostMapping("/abrirvisualizar")
 	public String abrirVisualizar(Ej ej) {
 		return "ej/visualizar";

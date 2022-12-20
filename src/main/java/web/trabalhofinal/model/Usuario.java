@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -29,11 +30,15 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank(message = "O nome é obrigatório")
 	private String nome;
+	@NotBlank(message = "O email é obrigatório")
 	private String email;
+	@NotBlank(message = "O telefone é obrigatório")
 	private String telefone;
 	@Enumerated(EnumType.STRING)
 	private Status status = Status.ATIVO;
+	@NotBlank(message = "A senha é obrigatória")
 	private String senha;
 	private boolean ativo;
 	@ManyToMany

@@ -3,9 +3,9 @@ package web.trabalhofinal.controller;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +15,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,14 +49,19 @@ public class PostController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public String cadastrar(Post post, Principal principal, Model model) {
-		LocalDateTime agora = LocalDateTime.now();
-		post.setDataHora(agora);
-		Cliente cliente = usuarioRepository.findClienteByEmail(principal.getName());
+	public String cadastrar(@Valid Post post, BindingResult resultado, Principal principal, Model model) {
 		
-		post.setCliente(cliente);
-		postService.salvar(post);
-		return "redirect:/post/listar";
+		if(resultado.hasErrors()) {
+			return "post/cadastrar";
+		}else {
+			LocalDateTime agora = LocalDateTime.now();
+			post.setDataHora(agora);
+			Cliente cliente = usuarioRepository.findClienteByEmail(principal.getName());
+			
+			post.setCliente(cliente);
+			postService.salvar(post);
+			return "redirect:/post/listar";
+		}
 	}
 
 	@GetMapping("/listar")

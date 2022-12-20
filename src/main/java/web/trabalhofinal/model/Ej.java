@@ -5,6 +5,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity 
@@ -12,13 +15,18 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 public class Ej extends Usuario{
 
+	@NotBlank(message = "A cidade é obrigatória")
 	private String cidade;
 	@Enumerated(EnumType.STRING)
+	@NotNull(message = "O estado é obrigatório")
 	private Uf uf;
+	@NotBlank(message = "O CNPJ é obrigatório")
 	private String cnpj;
 	@Enumerated(EnumType.STRING)
+	@NotNull(message = "A categoria é obrigatória")
 	private Categoria categoria;
 	@Column(name = "url_imagem")
+	@NotBlank(message = "A URL da logo é obrigatória")
 	private String urlImagem;
 	
 	public String getCidade() {

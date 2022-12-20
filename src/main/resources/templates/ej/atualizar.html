@@ -43,7 +43,7 @@
 				</li>
 				<li>
 					<div class="logar" sec:authorize="!isAuthenticated()">
-						<form action="#" th:action="@{/login}" method="post">
+						<form th:action="@{/login}" method="get">
 							<button type="submit" class="botaologar">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right login" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
@@ -74,27 +74,32 @@
 		<form class="row g-3" th:action="@{/ej/atualizar}" method="post" th:object="${ej}">
 			<input type="hidden" name="id" th:value="*{id}">
 			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" th:field="*{nome}" id="floatingInput" placeholder="Maria da Silva">
+				<input type="text" class="form-control" th:field="*{nome}" th:errorclass="is-invalid" id="floatingInput" placeholder="Maria da Silva">
 				<label for="floatingInput">Nome</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:each="erro : ${#fields.errors('nome')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="email" class="form-control" th:field="*{email}" id="floatingInput" placeholder="name@example.com">
+				<input type="email" class="form-control" th:field="*{email}" th:errorclass="is-invalid" id="floatingInput" placeholder="name@example.com">
 				<label for="floatingInput">Email</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:each="erro : ${#fields.errors('email')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{telefone}" placeholder="(34)9934539888">
+				<input type="text" class="form-control" id="floatingInput" th:errorclass="is-invalid" th:field="*{telefone}" placeholder="(34)9934539888">
 				<label for="floatingInput">Telefone</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('telefone')}" th:each="erro : ${#fields.errors('telefone')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{cnpj}" placeholder="12345678912">
+				<input type="text" class="form-control" id="floatingInput" th:errorclass="is-invalid" th:field="*{cnpj}" placeholder="12345678912">
 				<label for="floatingInput">CNPJ</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('cnpj')}" th:each="erro : ${#fields.errors('cnpj')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="text" class="form-control" id="floatingInput" th:field="*{cidade}" placeholder="Uberaba">
+				<input type="text" class="form-control" id="floatingInput" th:errorclass="is-invalid" th:field="*{cidade}" placeholder="Uberaba">
 				<label for="floatingInput">Cidade</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('cidade')}" th:each="erro : ${#fields.errors('cidade')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<select class="form-select " th:field="*{uf}">
+				<select class="form-select " th:field="*{uf}" th:errorclass="is-invalid">
 					<option th:value="${ej.uf}" th:text="${ej.uf.getDescricao()}" selected disabled hidden>Estado</option>
 					<option value="AC">Acre</option>
 					<option value="AL">Alagoas</option>
@@ -124,17 +129,20 @@
 					<option value="TO">Tocantins</option>
 				</select>
 				<label for="floatingInput">Estado</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('uf')}" th:each="erro : ${#fields.errors('uf')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="url" class="form-control" id="floatingInput" th:field="*{urlImagem}" placeholder="http://logo.com">
+				<input type="url" class="form-control" id="floatingInput" th:field="*{urlImagem}" th:errorclass="is-invalid" placeholder="http://logo.com">
 				<label for="floatingInput">URL Logo</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('urlImagem')}" th:each="erro : ${#fields.errors('urlImagem')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-6">
-				<input type="password" class="form-control" id="floatingInput" th:field="*{senha}" placeholder="12345678912">
+				<input type="password" class="form-control" id="floatingInput" th:field="*{senha}" th:errorclass="is-invalid" placeholder="12345678912">
 				<label for="floatingInput">Senha</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('senha')}" th:each="erro : ${#fields.errors('senha')}" th:text="${erro} + '. '"></span>
 			</div>
 			<div class="form-floating mb-3 col-md-12">
-				<select class="form-select " th:field="*{categoria}">
+				<select class="form-select " th:field="*{categoria}" th:errorclass="is-invalid">
 					<option th:value="${ej.categoria}" th:text="${ej.categoria.getDescricao()}" selected disabled hidden>Categoria</option>
 					<option value="TECNOLOGIA">Tecnologia</option>
 					<option value="SAUDE">Saúde</option>
@@ -148,6 +156,7 @@
 					<option value="MARKETING">Marketing</option>
 				</select>
 				<label for="floatingInput">Categoria</label>
+				<span class="invalid-feedback" th:if="${#fields.hasErrors('categoria')}" th:each="erro : ${#fields.errors('categoria')}" th:text="${erro} + '. '"></span>
 			</div>
 
 			<div class="d-grid gap-2 mb-5 col-6 mx-auto">

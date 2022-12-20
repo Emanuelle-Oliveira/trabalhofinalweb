@@ -1,6 +1,7 @@
 package web.trabalhofinal.model;
 
 import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,7 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.DynamicUpdate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -24,8 +29,10 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank(message = "A descrição é obrigatória")
 	private String descricao;
 	@Enumerated(EnumType.STRING)
+	@NotNull(message = "A categoria é obrigatória")
 	private Categoria categoria;
 	@Column(name = "data_hora")
 	private LocalDateTime dataHora;
