@@ -63,11 +63,25 @@ public class PostController {
 			return "redirect:/post/listar";
 		}
 	}
+	
+	@GetMapping("/abrirlistar")
+	public String abrirListar(Proposta proposta, Model model) {
+		
+		List<Cliente> cliente = usuarioRepository.findClientesAtivos();
+		model.addAttribute("cliente", cliente);
+		
+		return "post/listar";
+	}
 
 	@GetMapping("/listar")
 	public String listar(PostFilter filtro, Model model,
 			@PageableDefault(size = 5) @SortDefault(sort = "dataHora", direction = Sort.Direction.DESC) Pageable pageable,
-			HttpServletRequest request, Proposta proposta) {
+			HttpServletRequest request, Proposta proposta, Principal principal) {
+
+		model.addAttribute("principal", principal);
+		
+		List<Cliente> cliente = usuarioRepository.findClientesAtivos();
+		model.addAttribute("cliente", cliente);
 		
 		Page<Post> pagina = postRepository.pesquisar(filtro, pageable);
 		PageWrapper<Post> paginaWrapper = new PageWrapper<>(pagina, request);

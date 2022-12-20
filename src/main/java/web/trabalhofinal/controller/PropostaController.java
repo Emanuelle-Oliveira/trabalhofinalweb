@@ -50,12 +50,13 @@ public class PropostaController {
 	
 	@PostMapping("/cadastrar")
 	public String cadastrar(Proposta proposta, Principal principal, Model model, Post post) {
+		Proposta proposta2 = new Proposta();
 		LocalDateTime agora = LocalDateTime.now();
-		proposta.setDataHora(agora);
-		proposta.setPost(post);
+		proposta2.setDataHora(agora);
+		proposta2.setPost(post);
 		Ej ej = usuarioRepository.findEjByEmail(principal.getName());
-		proposta.setEj(ej);
-		propostaService.salvar(proposta);
+		proposta2.setEj(ej);
+		propostaService.salvar(proposta2);
 		return "redirect:/post/listar";
 	}
 	

@@ -75,7 +75,7 @@
 				<h1 class="tituloprop">Deseja confirmar a proposta?</h1>
 
 				<form class="row g-3" th:action="@{/proposta/cadastrar}" method="post" th:object="${proposta}">
-					<input type="hidden" name="id" th:value="${post.id}">
+					<input type="hidden" name="id" th:value="${post.id}"> 
 					<div class="d-grid gap-2 mb-5 mt-4 col-6 mx-auto">
 						<button type="submit" class="btn botao">Confirmar</button>
 					</div>

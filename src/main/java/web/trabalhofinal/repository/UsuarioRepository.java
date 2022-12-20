@@ -15,7 +15,7 @@ import web.trabalhofinal.repository.queries.EjQueries;
 public interface UsuarioRepository extends JpaRepository <Usuario, Long>, EjQueries{
 
 	@Query(value = "SELECT * FROM usuario AS u WHERE u.status = 'ATIVO' AND u.tipo_usuario = 'cliente'", nativeQuery = true)
-	List<Usuario> findClientesAtivos();
+	List<Cliente> findClientesAtivos();
 	
 	@Query(value = "SELECT * FROM usuario AS u WHERE u.status = 'ATIVO' AND u.tipo_usuario = 'ej'", nativeQuery = true)
 	List<Ej> findEjsAtivas();
