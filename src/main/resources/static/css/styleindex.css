@@ -4,7 +4,6 @@
     height: 90px;
     left: 0px;
     top: 0px;
-    margin-bottom: 30px;
 }
 
 .retangulo1{
@@ -445,15 +444,15 @@ footer {
 .quadrado1{
     position: absolute;
     left: 50%;
-    top: 30%;
-    width: 570px;
+    top: 43%;
+    width: 630px;
 }
 
 .quadrado2{
     position: absolute;
     left: 50%;
-    top: 50%;
-    width: 570px;
+    top: 57%;
+    width: 630px;
 }
 
 .tabela{
@@ -632,15 +631,17 @@ footer {
 }
 
 .carroselitem{
-    width: 500px;
-    height: 600px;
+    width: 650px;
+    height: 700px;
+    border-radius: 10px;
 }
 
 .teste{
-    width: 600px;
-    height: 450px;
+    width: 700px;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 10px;
 }
 
 .tituloprop{

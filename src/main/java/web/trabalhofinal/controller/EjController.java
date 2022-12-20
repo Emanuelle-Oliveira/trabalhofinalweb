@@ -42,43 +42,6 @@ public class EjController {
 
 	@GetMapping("/abrircadastrar")
 	public String abrirCadastrar(Ej ej) {
-		/*Usuario adm = new Usuario();
-		adm.setEmail("manu@gmail.com");
-		adm.setNome("Manu");
-		adm.setSenha("12345");
-		adm.setSenha(passwordEncoder.encode(adm.getSenha()));
-		usuarioRepository.save(adm);
-		
-		Cliente cliente1 = new Cliente();
-		cliente1.setNome("Maria Silva");
-		cliente1.setEmail("maria@gmail.com");
-		cliente1.setTelefone("(33)91111-1111");
-		cliente1.setCpf("111.111.111-11");
-		cliente1.setAtivo(true);
-		cliente1.setSenha("12345");
-		cliente1.setSenha(passwordEncoder.encode(cliente1.getSenha()));
-		usuarioRepository.save(cliente1);
-		
-		Cliente cliente2 = new Cliente();
-		cliente2.setNome("João Pereira");
-		cliente2.setEmail("joao@gmail.com");
-		cliente2.setTelefone("(33)92222-2222");
-		cliente2.setCpf("222.222.222-22");
-		cliente2.setAtivo(true);
-		cliente2.setSenha("12345");
-		cliente2.setSenha(passwordEncoder.encode(cliente2.getSenha()));
-		usuarioRepository.save(cliente2);
-		
-		Cliente cliente3 = new Cliente();
-		cliente3.setNome("Luana Souza");
-		cliente3.setEmail("luana@gmail.com");
-		cliente3.setTelefone("(33)93333-3333");
-		cliente3.setCpf("333.333.333-33");
-		cliente3.setAtivo(true);
-		cliente3.setSenha("12345");
-		cliente3.setSenha(passwordEncoder.encode(cliente3.getSenha()));
-		usuarioRepository.save(cliente3);
-		*/
 		return "ej/cadastrar";
 	}
 

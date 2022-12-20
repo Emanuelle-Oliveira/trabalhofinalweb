@@ -12,6 +12,7 @@ CREATE TABLE public.usuario
     tipo_usuario text,
     url_imagem text,
     senha text,
+    ativo boolean DEFAULT true,
     status text DEFAULT 'ATIVO',
     PRIMARY KEY (id)
 );
